@@ -16,6 +16,12 @@
 #include <pigpio.h>
 #include <iostream>
 #include "cv.h"
+#include <vector>
+#include <sstream>
+#include <numeric>
+#include <array>
+#include <functional>
+#include <iterator>
 
 using namespace cv;
 using namespace std;
@@ -54,8 +60,15 @@ void signalHandler (int signum) {
     exit(signum);
 }
 
+vector<double> center_weighted_savitzky_golay_filter(vector<double> data, int window_size, int polynomial_order, int derivative_order);
 
 int main( int argc, char **argv ) {
+
+	int bufferCount = 0;
+	vector<double> eegBuffer[8];
+	vector<double> imuBufferTemp[2];
+	vector<double> imuBuffer[2];
+	vector<double> cvBuffer[1];
 	
 	long double fittedRoll;
 	long double fittedPitch;
@@ -74,31 +87,30 @@ int main( int argc, char **argv ) {
 	gpioSetMode(4,PI_OUTPUT);
 	gpioSetMode(4,PI_OUTPUT);
 
-	
-	CascadeClassifier eyeCascade;
-    if (!eyeCascade.load("haarcascade_eye_tree_eyeglasses.xml")) {
-        cout << "xml not found! Check path and try again." << endl;
-        return 0;
-    }
-
-    VideoCapture cap(0); // cap(0) (webcam), cap(1) (video)
+	// Start of CV - Initialization
+    CascadeClassifier eyeCascade;
+    eyeCascade.load("haarcascade_eye_tree_eyeglasses.xml");
+    CascadeClassifier faceCascade;
+    faceCascade.load("haarcascade_frontalface_alt2.xml");
+    // Configure here: cap(0) for webcam, cap((string)path) for videos
+    // string path = "24-Blinks-1-Minute.mp4";
+    VideoCapture cap(0);
+    // Start Detecting Eyes
     Mat frame;
-
-    // Detect Eyes
-    Rect eyeRIO = Rect(0, 0, 0, 0); // eye region of interest (ROI)
-    while (eyeRIO.empty()) {
+    Rect eye = Rect(0, 0, 0, 0);
+    Rect iris = Rect(0, 0, 0, 0);
+    while (eye.empty())
+    {
         cap.read(frame);
-        cout << "Detecting eyes..." << endl; 
+        cout << "Detecting eyes..." << endl;
         if (frame.empty()) break;
         frame = CV.rotate(frame, 180);
-	imshow("frame", frame);
-	if (waitKey(1) == 27) {
-		cout << "Program terminated" << endl;
-		break;
-	}
-        eyeRIO = CV.detectEyes(frame, eyeCascade);
-    }
+        eye = CV.detectEyes(frame, eyeCascade);
+        iris = CV.detectIris(frame, eye);
 
+        imshow("detected", frame);
+        waitKey(1);
+    }
 
 	// Initialize 1st IMU
     printf("Initializing IMU MPU6050\n");
@@ -128,7 +140,6 @@ int main( int argc, char **argv ) {
 	dataArray[13]=0;	// index 13 for fittedPitch IMU values
 	dataArray[14]=0;	// index 14 for PERCLOS
 
-	
 	// getting start time
 	gpioTime(0,&startS,&startMS);
 
@@ -143,8 +154,8 @@ int main( int argc, char **argv ) {
 		// getting elapsed millisecond from elapsed microsecond
 		currVal = elapsedMS/1000;
 		
-		
-		if(serDataAvailable (EEG.serial_port)){
+		if(serDataAvailable (EEG.serial_port))
+		{
 			// printf("new ser data avail: %lf\n",(double) ((double) elapsedS + timeMS) );
 			streamByte = eegRead(&EEG);
 			// printing streamByte for debugging purposes
@@ -152,8 +163,8 @@ int main( int argc, char **argv ) {
 			fflush(stdout);
 			//startIMUFlag = 1;
 		}
-		
-		else if(startCVFlag == 0 && startIMUFlag != 0) {
+		else if(startCVFlag == 0 && startIMUFlag != 0) 
+		{
 			readIMU(&IMU,1);
 			dataArray[0] = (double) ((double) elapsedS + timeMS);
 
@@ -165,27 +176,90 @@ int main( int argc, char **argv ) {
 			dataArray[12]=(double)fittedRoll;
 			dataArray[13]=(double)fittedPitch;
 			fwrite(dataArray,sizeof(double),15,data);
+
+			//	creating vector array of data
+			if(bufferCount != 900) {
+
+				// inserting EEG data to eegBuffer for Model Prediction
+				eegBuffer[0].push_back(dataArray[3]); // insert Delta Band to data vector
+				eegBuffer[1].push_back(dataArray[4]); // insert Theta Band to data vector
+				eegBuffer[2].push_back(dataArray[5]); // insert Low-alpha Band to data vector
+				eegBuffer[3].push_back(dataArray[6]); // insert High-alpha Band to data vector
+				eegBuffer[4].push_back(dataArray[7]); // insert Low-beta Band to data vector
+				eegBuffer[5].push_back(dataArray[8]); // insert High-beta Band to data vector
+				eegBuffer[6].push_back(dataArray[9]); // insert Low-gamma Band to data vector
+				eegBuffer[7].push_back(dataArray[10]); // insert Mid-gamma Band to data vector
+
+				// inserting IMU data to imuBufferTemp to be processed later before proceeding to model prediction
+				imuBufferTemp[0].push_back(dataArray[12]); // insert fittedRoll to data vector
+				imuBufferTemp[1].push_back(dataArray[13]); // insert fittedPitch Band to data vector
+
+				// inserting PERCLOS data to cvBuffer for Model Prediction
+				cvBuffer[0].push_back(dataArray[14]); // insert Perclos to data vector
+
+
+
+				bufferCount++;
+
+
+			}
+			else if(bufferCount == 900) {
+				
+				int window_size = 51;
+				int polynomial_order = 2;
+				int derivative_order = 0;
+
+				// SGOLAY FILTER for ROLL
+				vector<double> sgolayRoll = center_weighted_savitzky_golay_filter(imuBufferTemp[0], window_size, polynomial_order, derivative_order);
+				// SGOLAY FILTER for PITCH
+				vector<double> sgolayPitch = center_weighted_savitzky_golay_filter(imuBufferTemp[1], window_size, polynomial_order, derivative_order);
+
+				// getting Derivative of sgolayRoll and sgolayPitch
+				vector<double> dysgolayRoll(sgolayRoll.size(), 0.0);
+				vector<double> dysgolayPitch(sgolayPitch.size(), 0.0);
+
+				// diff() function in matlab
+    			std::adjacent_difference( std::begin(sgolayRoll), std::end(sgolayRoll), std::begin(dysgolayRoll) );
+				std::adjacent_difference( std::begin(sgolayPitch), std::end(sgolayPitch), std::begin(dysgolayPitch) );
+
+				imuBuffer[0] = dysgolayRoll;
+				imuBuffer[1] = dysgolayPitch;
+				// replacing first element of imuBuffer to 0 since pre-differentiated value at index 0 is retained
+				imuBuffer[0][0] = 0.0;
+    			imuBuffer[1][0] = 0.0;
+
+				/* code here for evaluating prediction
+				*	Use eegBuffer vector array for eeg classifier
+				*	Use imuBuffer vector array for imu classifier
+				*	Use cvBuffer vector array for cv classifier
+				*/
+
+				// clearing buffer after prediction
+				eegBuffer.clear();
+				imuBufferTemp.clear();
+				imuBuffer.clear();
+				cvBuffer.clear();
+				bufferCount = 0;
+			}
+
 			startCVFlag = 1;
 			startIMUFlag = 0;
 		}
-		else if(startCVFlag != 0) {
-			// printf("Detecting Eye\n");
+		else if(startCVFlag != 0) 
+		{
 			cap.read(frame);
 			if (frame.empty()) break;
-			if (eyeRIO.empty()) break;
-			frame = CV.rotate(frame, 180);
-			frame = frame(eyeRIO);
-			CV.detectBlink(frame);
+			frame = CV.rotate(frame, 180.0);
+			frame = frame(eye);
+			CV.detectBlink(frame, eye, iris);
+			waitKey(1);
+				
 			// cout << "Time: " << (double) ((double) elapsedS + timeMS) << " ------ PERCLOS = " << CV.PERCLOS << endl;
-			if(elapsedS % 1 == 0) {
+			if(elapsedS % 1 == 0) 
+			{
 				dataArray[0] = (double) ((double) elapsedS + timeMS);
 				dataArray[14] = (double) CV.PERCLOS;
 			}
-			if (waitKey(1) == 27) {
-				cout << "Program terminated" << endl;
-				break;
-			}
-			
 			startCVFlag = 0;
 		}
 		/*
@@ -207,4 +281,43 @@ int main( int argc, char **argv ) {
 	}
    
     return 0;
+}
+
+
+vector<double> center_weighted_savitzky_golay_filter(vector<double> data, int window_size, int polynomial_order, int derivative_order) {
+    vector<double> filtered_data;
+    int half_window = (window_size - 1) / 2;
+    int n = data.size();
+    double sum_weights = 0;
+
+    // Calculate weights for the filter
+    vector<double> weights(window_size);
+    for (int i = -half_window; i <= half_window; i++) {
+        double weight = 0;
+        for (int j = 0; j <= polynomial_order; j++) {
+            weight += pow(i, j);
+        }
+        weight = abs(weight);
+        weights[i + half_window] = weight;
+        sum_weights += weight;
+    }
+
+    // Apply the filter
+    for (int i = 0; i < n; i++) {
+        double filtered_value = 0;
+        for (int j = -half_window; j <= half_window; j++) {
+            int index = i + j;
+            if (index < 0) {
+                index = 0;
+            }
+            if (index >= n) {
+                index = n - 1;
+            }
+            filtered_value += weights[j + half_window] * data[index];
+        }
+        filtered_value /= sum_weights;
+        filtered_data.push_back(filtered_value);
+    }
+
+    return filtered_data;
 }
