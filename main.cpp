@@ -140,6 +140,13 @@ int main( int argc, char **argv ) {
 	dataArray[13]=0;	// index 13 for fittedPitch IMU values
 	dataArray[14]=0;	// index 14 for PERCLOS
 
+	/*
+	int iDataArray = 0;
+	for (iDataArray=0; i<=14; i++){
+		iDataArray[i] = 0;
+	}
+	*/
+	
 	// getting start time
 	gpioTime(0,&startS,&startMS);
 
