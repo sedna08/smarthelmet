@@ -22,6 +22,7 @@ EEG::EEG() {
 
 void initEEG(EEG *EEG) {
     
+	// access TX RX pins of RPI
     char port[] = "/dev/ttyAMA0";
 	
 	THINKGEAR_initParser( &EEG->parser, PARSER_TYPE_PACKETS, handleDataValueFunc, NULL);
