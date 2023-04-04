@@ -404,7 +404,7 @@ void handleDataValueFunc( unsigned char extendedCodeLevel,
                     }
                     //printf( " %02X", value[i] & 0xFF );  
                 }
-                // storing normalized EEG Bands values
+                // storing normalized EEG Bands values -- different brain waves
                 dataArray[3] = (double) delta / delta;
                 dataArray[4] = (double) theta / delta;
                 dataArray[5] = (double) lowalpha / delta;
