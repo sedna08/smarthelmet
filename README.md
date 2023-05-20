@@ -5,7 +5,7 @@ This is a repository for smarthelmet development (sensor fusion of three drowsy 
 
 The following images are 3D Design of the 2nd iteration of the development of the smarthelmet. This design uses a _hard hat_ rather than an actual motorcycle helmet. This is design utilizes the rigidness of the hard hat since we are focusing on creating a _testing rig_ to make the _sensor fusion_ work.
 
-![Smarthelmet 3D Design outside look.](https://github.com/sedna08/smarthelmet/blob/0aabe0294ce65127887dae3d877662d1fbc55b5c/Images/outside%20look.png) ![Smarthelmet 3D Design inside look.](https://github.com/sedna08/smarthelmet/blob/0aabe0294ce65127887dae3d877662d1fbc55b5c/Images/inside%20look.png) ![Smarthelmet 3D Design Electrode Placements](https://github.com/sedna08/smarthelmet/blob/facaa2057c392c58edaed59e896b3b34a3dd6490/Images/Electrode%20Placements.png)
+![Smarthelmet 3D Design outside look.](https://github.com/sedna08/smarthelmet/blob/0aabe0294ce65127887dae3d877662d1fbc55b5c/Images/outside%20look.png) ![Smarthelmet 3D Design Electrode Placements](https://github.com/sedna08/smarthelmet/blob/facaa2057c392c58edaed59e896b3b34a3dd6490/Images/Electrode%20Placements.png)
 
 ## *System Block Diagram*
 
