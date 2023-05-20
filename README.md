@@ -22,6 +22,6 @@ The following images are the flowcharts of the whole system as well as the indiv
 <img src = "https://github.com/sedna08/smarthelmet/blob/1ae7d97daf8c31438e3fdca77b00d16b2fde7109/Images/System%20General%20Flow.jpg" height = "250"/> ------------ <img src = "https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/EEG%20module%20Flow.jpg" height = "250"/>
 
 ### *CV (Computer Vision Module)* ---- *IMU (Inertial Measurement Unit Module)*
-<img src = "https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/CV%20Module%20System%20Flow%20(1).jpg" height = "250"/> ---------------------------- <img src = "https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/IMU%20Module%20Flow.jpg" height = "250"/>
+<img src = "https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/CV%20Module%20System%20Flow%20(1).jpg" height = "250"/> <img src = "https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/CV%20Module%20System%20Flow%20(2).jpg" height = "250"/> ---------------- <img src = "https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/IMU%20Module%20Flow.jpg" height = "250"/>
 
-<img src = "https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/CV%20Module%20System%20Flow%20(2).jpg" height = "250"/>
+
