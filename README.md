@@ -14,13 +14,13 @@ The following images are the flowcharts of the whole system as well as the indiv
 
 ### *General System Flow*              
 
-![Smarthelmet General System Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/System%20General%20Flow.png)  
+![Smarthelmet General System Flow](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/System%20General%20Flow.jpg)  
 
 ### *EEG (Electroencephalography Module)*  
-![EEG Module Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/EEG%20module%20Flow.png)
+![EEG Module Flow](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/EEG%20module%20Flow.jpg)
 
 ### *CV (Computer Vision Module)* 
-![CV Module Flow1](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/CV%20Module%20System%20Flow%20(1).png) ![CV Module Flow2](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/CV%20Module%20System%20Flow%20(2).png) 
+![CV Module Flow1](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/CV%20Module%20System%20Flow%20(1).jpg) ![CV Module Flow2](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/CV%20Module%20System%20Flow%20(2).jpg) 
 
 ### *IMU (Inertial Measurement Unit Module)*
-![IMU Module Flow](https://github.com/sedna08/smarthelmet/blob/2a97d6dc0fa54baa79ced40bfb044b89745497d9/Images/IMU%20Module%20Flow.png)
+![IMU Module Flow](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/IMU%20Module%20Flow.jpg)
