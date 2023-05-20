@@ -12,7 +12,6 @@ The following images are 3D Design of the 2nd iteration of the development of th
 This is the block diagram of this smarthelmet development. It uses RaspberryPi 3B+ as the controller of the sensors.
 
 ![System Block Diagram](https://github.com/sedna08/smarthelmet/blob/a943ae99c82a158bc1b75f1cb6460c6add2b1ed1/Images/System%20Block%20Diagram.png)
-<img src = "https://github.com/sedna08/smarthelmet/blob/a943ae99c82a158bc1b75f1cb6460c6add2b1ed1/Images/System%20Block%20Diagram.png" width = "200" height = "200"/>
 
 ## *System Flow*
 
@@ -20,7 +19,7 @@ The following images are the flowcharts of the whole system as well as the indiv
 
 ### *General System Flow*              
 
-![Smarthelmet General System Flow](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/System%20General%20Flow.jpg =100px)  
+<img src = "https://github.com/sedna08/smarthelmet/blob/a943ae99c82a158bc1b75f1cb6460c6add2b1ed1/Images/System%20Block%20Diagram.png" height = "100"/>
 
 ### *EEG (Electroencephalography Module)*  
 ![EEG Module Flow](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/EEG%20module%20Flow.jpg)
