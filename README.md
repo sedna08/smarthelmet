@@ -7,6 +7,11 @@ The following images are 3D Design of the 2nd iteration of the development of th
 
 ![Smarthelmet 3D Design outside look.](https://github.com/sedna08/smarthelmet/blob/0aabe0294ce65127887dae3d877662d1fbc55b5c/Images/outside%20look.png) ![Smarthelmet 3D Design inside look.](https://github.com/sedna08/smarthelmet/blob/0aabe0294ce65127887dae3d877662d1fbc55b5c/Images/inside%20look.png) ![Smarthelmet 3D Design Electrode Placements](https://github.com/sedna08/smarthelmet/blob/facaa2057c392c58edaed59e896b3b34a3dd6490/Images/Electrode%20Placements.png)
 
+## *System Block Diagram*
+
+This is the block diagram of this smarthelmet development. It uses RaspberryPi 3B+ as the controller of the sensors.
+
+![System Block Diagram](https://github.com/sedna08/smarthelmet/blob/a943ae99c82a158bc1b75f1cb6460c6add2b1ed1/Images/System%20Block%20Diagram.png)
 
 ## *System Flow*
 
