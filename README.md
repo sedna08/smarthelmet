@@ -29,3 +29,5 @@ The following images are the flowcharts of the whole system as well as the indiv
 
 ### *IMU (Inertial Measurement Unit Module)*
 ![IMU Module Flow](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/IMU%20Module%20Flow.jpg)
+
+![](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png =250x250)
