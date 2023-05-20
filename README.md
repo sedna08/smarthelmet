@@ -12,16 +12,25 @@ The following images are 3D Design of the 2nd iteration of the development of th
 
 The following images are the flowcharts of the whole system as well as the individual modules on how they capture data:
 
-### *General System Flow*                     *EEG (Electroencephalography Module)*                *CV (Computer Vision Module)* 
+### *General System Flow*              
 
-![Smarthelmet General System Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/System%20General%20Flow.png) ![EEG Module Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/EEG%20module%20Flow.png) ![CV Module Flow1](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/CV%20Module%20System%20Flow%20(1).png) ![CV Module Flow2](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/CV%20Module%20System%20Flow%20(2).png) 
+![Smarthelmet General System Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/System%20General%20Flow.png)  
 
+### *EEG (Electroencephalography Module)*  
+![EEG Module Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/EEG%20module%20Flow.png)
+
+### *CV (Computer Vision Module)* 
+![CV Module Flow1](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/CV%20Module%20System%20Flow%20(1).png) ![CV Module Flow2](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/CV%20Module%20System%20Flow%20(2).png) 
 
 ### *IMU (Inertial Measurement Unit Module)*
 ![IMU Module Flow](https://github.com/sedna08/smarthelmet/blob/2a97d6dc0fa54baa79ced40bfb044b89745497d9/Images/IMU%20Module%20Flow.png)
 
 
-
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+</picture>
 
 
 
