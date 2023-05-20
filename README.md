@@ -12,13 +12,13 @@ The following images are 3D Design of the 2nd iteration of the development of th
 
 The following images are the flowcharts of the whole system as well as the individual modules on how they capture data:
 
-### *General System Flow*
+### *General System Flow*                                     ### *EEG (Electroencephalography Module)*
 
-![Smarthelmet General System Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/System%20General%20Flow.png)
+![Smarthelmet General System Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/System%20General%20Flow.png)           ![EEG Module Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/EEG%20module%20Flow.png)
 
-### *EEG (Electroencephalography Module)*
 
-![EEG Module Flow](https://github.com/sedna08/smarthelmet/blob/bb09ca84594e45c5411b117edc064203af046390/Images/EEG%20module%20Flow.png)
+
+
 
 ### *CV (Computer Vision Module)*
 
