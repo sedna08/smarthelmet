@@ -19,7 +19,7 @@ The following images are the flowcharts of the whole system as well as the indiv
 
 ### *General System Flow*              
 
-<img src = "https://github.com/sedna08/smarthelmet/blob/a943ae99c82a158bc1b75f1cb6460c6add2b1ed1/Images/System%20Block%20Diagram.png" height = "100"/>
+<img src = "https://github.com/sedna08/smarthelmet/blob/1ae7d97daf8c31438e3fdca77b00d16b2fde7109/Images/System%20General%20Flow.jpg" height = "100"/>
 
 ### *EEG (Electroencephalography Module)*  
 ![EEG Module Flow](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/EEG%20module%20Flow.jpg)
