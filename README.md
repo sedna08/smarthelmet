@@ -12,6 +12,7 @@ The following images are 3D Design of the 2nd iteration of the development of th
 This is the block diagram of this smarthelmet development. It uses RaspberryPi 3B+ as the controller of the sensors.
 
 ![System Block Diagram](https://github.com/sedna08/smarthelmet/blob/a943ae99c82a158bc1b75f1cb6460c6add2b1ed1/Images/System%20Block%20Diagram.png)
+<img src = "https://github.com/sedna08/smarthelmet/blob/a943ae99c82a158bc1b75f1cb6460c6add2b1ed1/Images/System%20Block%20Diagram.png" width = "200" height = "200"/>
 
 ## *System Flow*
 
@@ -29,5 +30,3 @@ The following images are the flowcharts of the whole system as well as the indiv
 
 ### *IMU (Inertial Measurement Unit Module)*
 ![IMU Module Flow](https://github.com/sedna08/smarthelmet/blob/9951ae5c92985bfb5781eeba2a5df1243dfcb9ec/Images/IMU%20Module%20Flow.jpg)
-
-![](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png =250x250)
