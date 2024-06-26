@@ -178,7 +178,7 @@ int main( int argc, char **argv ) {
 			if(elapsedS % 1 == 0) 
 			{
 				dataArray[0] = (double) ((double) elapsedS + timeMS);
-				dataArray[14] = (double) CV.PERCLOS;
+				dataArray[14] = (double) CV.perclos;
 			}
 			startCVFlag = 0;
 		}
